@@ -4,16 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Agility Logistics Parks | Bot Demo</title>
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <style>
         /* --- CSS STYLES --- */
         :root {
-            --primary-green: #8dc63f;
-            --dark-blue: #003359;
-            --text-gray: #555;
-            --light-bg: #f4f7f9;
-            --white: #ffffff;
+            --primary-yellow: #ffcc00; /* Bold Industrial Yellow */
+            --bg-black: #111111;       /* Deep Black */
+            --card-black: #1a1a1a;     /* Slightly lighter black for cards */
+            --text-white: #ffffff;
+            --text-gray: #aaaaaa;
         }
 
         * {
@@ -25,14 +26,15 @@
         body {
             font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
             line-height: 1.6;
-            color: var(--text-gray);
+            color: var(--text-white);
+            background-color: var(--bg-black);
             overflow-x: hidden;
         }
 
         /* Navigation */
         header {
-            background: var(--white);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            background: var(--bg-black);
+            border-bottom: 1px solid #333;
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -57,8 +59,8 @@
             letter-spacing: -1px;
         }
 
-        .logo-text { color: var(--dark-blue); }
-        .logo-sub { color: var(--primary-green); margin-left: 2px; }
+        .logo-text { color: var(--text-white); }
+        .logo-sub { color: var(--primary-yellow); margin-left: 2px; }
 
         .nav-links {
             display: flex;
@@ -70,34 +72,32 @@
 
         .nav-links a {
             text-decoration: none;
-            color: var(--dark-blue);
+            color: var(--text-white);
             font-weight: 600;
             font-size: 0.9rem;
             transition: color 0.3s;
         }
 
-        .nav-links a:hover { color: var(--primary-green); }
+        .nav-links a:hover { color: var(--primary-yellow); }
 
         .btn-contact {
-            background: var(--primary-green);
-            color: var(--white) !important;
+            background: var(--primary-yellow);
+            color: var(--bg-black) !important;
             padding: 10px 22px;
             border-radius: 4px;
-            transition: opacity 0.3s !important;
+            font-weight: bold;
         }
-
-        .btn-contact:hover { opacity: 0.9; }
 
         /* Hero Section */
         .hero {
             height: 80vh;
-            background: linear-gradient(rgba(0,51,89,0.65), rgba(0,51,89,0.65)), 
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
                         url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=2000') no-repeat center center/cover;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            color: var(--white);
+            color: var(--text-white);
             padding: 0 20px;
         }
 
@@ -114,7 +114,7 @@
             max-width: 700px;
             margin-left: auto;
             margin-right: auto;
-            opacity: 0.9;
+            color: var(--text-gray);
         }
 
         .hero-btns .btn {
@@ -127,16 +127,16 @@
             transition: all 0.3s;
         }
 
-        .btn-primary { background: var(--primary-green); color: white; }
-        .btn-secondary { border: 2px solid white; color: white; }
+        .btn-primary { background: var(--primary-yellow); color: var(--bg-black); }
+        .btn-secondary { border: 2px solid var(--primary-yellow); color: var(--primary-yellow); }
 
-        .btn-primary:hover { background: #7bb034; transform: translateY(-2px); }
-        .btn-secondary:hover { background: white; color: var(--dark-blue); }
+        .btn-primary:hover { background: #e6b800; transform: translateY(-2px); }
+        .btn-secondary:hover { background: var(--primary-yellow); color: var(--bg-black); }
 
         /* Solutions Section */
         .solutions {
             padding: 100px 5%;
-            background: var(--light-bg);
+            background: #000000;
         }
 
         .container {
@@ -150,7 +150,7 @@
         }
 
         .section-header h2 {
-            color: var(--dark-blue);
+            color: var(--text-white);
             font-size: 2.5rem;
             margin-bottom: 10px;
         }
@@ -158,7 +158,7 @@
         .section-header .underline {
             width: 60px;
             height: 4px;
-            background: var(--primary-green);
+            background: var(--primary-yellow);
             margin: auto;
         }
 
@@ -169,36 +169,40 @@
         }
 
         .card {
-            background: var(--white);
+            background: var(--card-black);
             padding: 50px 30px;
-            border-radius: 2px;
+            border-radius: 8px;
             text-align: left;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
             transition: all 0.3s;
-            border-bottom: 4px solid transparent;
+            border: 1px solid #333;
         }
 
         .card:hover {
             transform: translateY(-10px);
-            border-bottom: 4px solid var(--primary-green);
+            border-color: var(--primary-yellow);
         }
 
         .card i {
             font-size: 2.5rem;
-            color: var(--primary-green);
+            color: var(--primary-yellow);
             margin-bottom: 25px;
         }
 
         .card h3 {
-            color: var(--dark-blue);
+            color: var(--primary-yellow);
             margin-bottom: 15px;
             font-size: 1.4rem;
         }
 
+        .card p {
+            color: var(--text-gray);
+        }
+
         /* Footer */
         footer {
-            background: var(--dark-blue);
-            color: rgba(255,255,255,0.7);
+            background: var(--bg-black);
+            border-top: 1px solid #333;
+            color: var(--text-gray);
             text-align: center;
             padding: 60px 0;
             font-size: 0.9rem;
@@ -209,9 +213,9 @@
             .nav-links { display: none; }
         }
     </style>
-</head>
 
     <script src="https://app.reply.cx/chat-widget/6XSAxroYrUzz055654287036vz7wNoDh.js" defer></script>
+</head>
 <body>
 
     <header>
@@ -224,7 +228,6 @@
                 <li><a href="#">Solutions</a></li>
                 <li><a href="#">Sustainability</a></li>
                 <li><a href="#">Locations</a></li>
-                <li><a href="#">News</a></li>
                 <li><a href="#" class="btn-contact">Contact Sales</a></li>
             </ul>
         </nav>
@@ -233,10 +236,10 @@
     <section class="hero">
         <div class="hero-content">
             <h1>Infrastructure for Global Trade</h1>
-            <p>We provide the essential space and services that enable businesses to grow in the world's fastest-moving markets.</p>
+            <p>Empowering businesses with sustainable industrial space in the world's most dynamic emerging markets.</p>
             <div class="hero-btns">
                 <a href="#" class="btn btn-primary">Our Network</a>
-                <a href="#" class="btn btn-secondary">Leasing Inquiries</a>
+                <a href="#" class="btn btn-secondary">Find a Park</a>
             </div>
         </div>
     </section>
@@ -252,19 +255,19 @@
                 <div class="card">
                     <i class="fas fa-industry"></i>
                     <h3>Ready-Built Warehousing</h3>
-                    <p>International-standard Class A warehouses designed for logistics, distribution, and light-industrial operations.</p>
+                    <p>International-standard Class A warehouses designed for immediate move-in and high-efficiency logistics.</p>
                 </div>
                 
                 <div class="card">
                     <i class="fas fa-drafting-compass"></i>
                     <h3>Built-to-Suit</h3>
-                    <p>Custom-designed facilities tailored to specific operational requirements and technical specifications.</p>
+                    <p>Custom industrial real estate solutions engineered to your specific technical and operational needs.</p>
                 </div>
                 
                 <div class="card">
-                    <i class="fas fa-solar-panel"></i>
-                    <h3>Green Infrastructure</h3>
-                    <p>Environmentally conscious designs featuring EDGE certification, solar power, and energy-efficient systems.</p>
+                    <i class="fas fa-leaf"></i>
+                    <h3>Sustainable Design</h3>
+                    <p>Environmentally conscious parks featuring solar integration and resource-efficient infrastructure.</p>
                 </div>
             </div>
         </div>
@@ -272,7 +275,7 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2026 Agility Logistics Parks. Providing industrial real estate excellence across emerging markets.</p>
+            <p>&copy; 2026 Agility Logistics Parks. Industrial excellence built on reliability.</p>
         </div>
     </footer>
 
