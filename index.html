@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agility Logistics Parks | Bot Demo</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        /* --- CSS STYLES --- */
+        :root {
+            --primary-green: #8dc63f;
+            --dark-blue: #003359;
+            --text-gray: #555;
+            --light-bg: #f4f7f9;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-gray);
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        header {
+            background: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            max-width: 1400px;
+            margin: auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            font-size: 1.5rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: -1px;
+        }
+
+        .logo-text { color: var(--dark-blue); }
+        .logo-sub { color: var(--primary-green); margin-left: 2px; }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links li { margin-left: 30px; }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark-blue);
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover { color: var(--primary-green); }
+
+        .btn-contact {
+            background: var(--primary-green);
+            color: var(--white) !important;
+            padding: 10px 22px;
+            border-radius: 4px;
+            transition: opacity 0.3s !important;
+        }
+
+        .btn-contact:hover { opacity: 0.9; }
+
+        /* Hero Section */
+        .hero {
+            height: 80vh;
+            background: linear-gradient(rgba(0,51,89,0.65), rgba(0,51,89,0.65)), 
+                        url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=2000') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            padding: 0 20px;
+        }
+
+        .hero-content h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            margin-bottom: 1.5rem;
+            max-width: 900px;
+            line-height: 1.1;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0.9;
+        }
+
+        .hero-btns .btn {
+            display: inline-block;
+            padding: 15px 35px;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+            margin: 10px;
+            transition: all 0.3s;
+        }
+
+        .btn-primary { background: var(--primary-green); color: white; }
+        .btn-secondary { border: 2px solid white; color: white; }
+
+        .btn-primary:hover { background: #7bb034; transform: translateY(-2px); }
+        .btn-secondary:hover { background: white; color: var(--dark-blue); }
+
+        /* Solutions Section */
+        .solutions {
+            padding: 100px 5%;
+            background: var(--light-bg);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            color: var(--dark-blue);
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .section-header .underline {
+            width: 60px;
+            height: 4px;
+            background: var(--primary-green);
+            margin: auto;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+        }
+
+        .card {
+            background: var(--white);
+            padding: 50px 30px;
+            border-radius: 2px;
+            text-align: left;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: all 0.3s;
+            border-bottom: 4px solid transparent;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            border-bottom: 4px solid var(--primary-green);
+        }
+
+        .card i {
+            font-size: 2.5rem;
+            color: var(--primary-green);
+            margin-bottom: 25px;
+        }
+
+        .card h3 {
+            color: var(--dark-blue);
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark-blue);
+            color: rgba(255,255,255,0.7);
+            text-align: center;
+            padding: 60px 0;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Utilities */
+        @media (max-width: 992px) {
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav class="navbar">
+            <a href="#" class="logo">
+                <span class="logo-text">Agility</span><span class="logo-sub">Logistics Parks</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#">Company</a></li>
+                <li><a href="#">Solutions</a></li>
+                <li><a href="#">Sustainability</a></li>
+                <li><a href="#">Locations</a></li>
+                <li><a href="#">News</a></li>
+                <li><a href="#" class="btn-contact">Contact Sales</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Infrastructure for Global Trade</h1>
+            <p>We provide the essential space and services that enable businesses to grow in the world's fastest-moving markets.</p>
+            <div class="hero-btns">
+                <a href="#" class="btn btn-primary">Our Network</a>
+                <a href="#" class="btn btn-secondary">Leasing Inquiries</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="solutions">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Core Solutions</h2>
+                <div class="underline"></div>
+            </div>
+            
+            <div class="grid">
+                <div class="card">
+                    <i class="fas fa-industry"></i>
+                    <h3>Ready-Built Warehousing</h3>
+                    <p>International-standard Class A warehouses designed for logistics, distribution, and light-industrial operations.</p>
+                </div>
+                
+                <div class="card">
+                    <i class="fas fa-drafting-compass"></i>
+                    <h3>Built-to-Suit</h3>
+                    <p>Custom-designed facilities tailored to specific operational requirements and technical specifications.</p>
+                </div>
+                
+                <div class="card">
+                    <i class="fas fa-solar-panel"></i>
+                    <h3>Green Infrastructure</h3>
+                    <p>Environmentally conscious designs featuring EDGE certification, solar power, and energy-efficient systems.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Agility Logistics Parks. Providing industrial real estate excellence across emerging markets.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
